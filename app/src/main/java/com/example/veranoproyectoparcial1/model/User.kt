@@ -1,4 +1,4 @@
 package com.example.veranoproyectoparcial1.model
 
-class TaskUser {
+class User {
 }

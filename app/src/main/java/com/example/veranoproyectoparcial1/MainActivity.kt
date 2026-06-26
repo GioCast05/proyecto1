@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.veranoproyectoparcial1.navigation.NavGraph
-import com.example.veranoproyectoparcial1.ui.screens.TaskCustomerScreen
+import com.example.veranoproyectoparcial1.ui.screens.CustomerScreen
 import com.example.veranoproyectoparcial1.ui.theme.VeranoProyectoParcial1Theme
 import com.example.veranoproyectoparcial1.viewModel.TaskViewModel
 
@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             VeranoProyectoParcial1Theme {
                 val taskViewModel = TaskViewModel()
-                TaskCustomerScreen(viewModel = taskViewModel)
+                CustomerScreen(viewModel = taskViewModel)
             }
         }
     }

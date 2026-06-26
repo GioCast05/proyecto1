@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.sp
 import com.example.veranoproyectoparcial1.viewModel.TaskViewModel
 
 @Composable
-fun TaskCustomerScreen(viewModel: TaskViewModel) {
+fun CustomerScreen(viewModel: TaskViewModel) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = Color(0xFFFAD1AF)
