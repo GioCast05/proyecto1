@@ -1,4 +1,6 @@
 package com.example.veranoproyectoparcial1.viewModel
 
-class TaskViewModel {
+import androidx.lifecycle.ViewModel
+
+class TaskViewModel : ViewModel() {
 }

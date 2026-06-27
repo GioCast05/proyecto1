@@ -25,8 +25,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             VeranoProyectoParcial1Theme {
-                val taskViewModel = TaskViewModel()
-                CustomerScreen(viewModel = taskViewModel)
+                Surface(color= MaterialTheme.colorScheme.background){
+                    val navController = rememberNavController()
+                    NavGraph(navController = navController)
+                }
             }
         }
     }

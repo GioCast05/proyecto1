@@ -11,10 +11,11 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.veranoproyectoparcial1.viewModel.TaskViewModel
 
 @Composable
-fun CustomerScreen(viewModel: TaskViewModel) {
+fun CustomerScreen(navController: NavController, viewModel: TaskViewModel) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = Color(0xFFFAD1AF)
@@ -53,7 +54,7 @@ fun CustomerScreen(viewModel: TaskViewModel) {
 
 
             Button(
-                onClick = {  },
+                onClick = { navController.navigate("OrderScreen") },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA2A2FF)),
                 shape = RoundedCornerShape(25.dp),
                 modifier = Modifier.size(width = 180.dp, height = 60.dp)
