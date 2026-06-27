@@ -35,7 +35,7 @@ fun OrdersScreen(navController: NavController, viewModel: TaskViewModel) {
                 text = "ORDERS",
                 style = MaterialTheme.typography.headlineLarge,
                 fontWeight = FontWeight.Bold,
-                fontFamily = FontFamily.SansSerif,
+                fontFamily = FontFamily.Cursive,
                 color = Color(0xFF424242),
                 letterSpacing = 2.sp
             )
