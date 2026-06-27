@@ -42,7 +42,7 @@ fun CustomerScreen(navController: NavController, viewModel: TaskViewModel) {
 
 
             Button(
-                onClick = {  },
+                onClick = { navController.navigate("OrdersScreen") },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA2A2FF)),
                 shape = RoundedCornerShape(25.dp),
                 modifier = Modifier.size(width = 180.dp, height = 60.dp)
