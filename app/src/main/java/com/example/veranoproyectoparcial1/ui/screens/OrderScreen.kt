@@ -16,10 +16,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.veranoproyectoparcial1.ui.theme.btnazul
 import com.example.veranoproyectoparcial1.ui.theme.masa
-import com.example.veranoproyectoparcial1.viewModel.TaskViewModel
+import com.example.veranoproyectoparcial1.viewModel.OrdersViewModel
 
 @Composable
-fun OrderScreen(navController: NavController, viewModel: TaskViewModel) {
+fun OrderScreen(navController: NavController, ordersViewModel: OrdersViewModel) {
     var Type by remember { mutableStateOf("") }
     var Size by remember { mutableStateOf("") }
     var amount by remember { mutableStateOf("") }
@@ -80,7 +80,7 @@ fun OrderScreen(navController: NavController, viewModel: TaskViewModel) {
             Button(
                 onClick = {
                     if (Type.isNotBlank() && Size.isNotBlank() && amount.isNotBlank()) {
-                        viewModel.addOrder(Type, Size, amount)
+                        ordersViewModel.addOrder(Type, Size, amount)
                         navController.navigate("OrdersScreen")
                     }
                 },

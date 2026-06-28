@@ -16,10 +16,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.veranoproyectoparcial1.ui.theme.btnazul
 import com.example.veranoproyectoparcial1.ui.theme.masa
-import com.example.veranoproyectoparcial1.viewModel.TaskViewModel
+import com.example.veranoproyectoparcial1.viewModel.OrdersViewModel
 
 @Composable
-fun CustomerScreen(navController: NavController, viewModel: TaskViewModel) {
+fun CustomerScreen(navController: NavController, ordersViewModel: OrdersViewModel) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = masa

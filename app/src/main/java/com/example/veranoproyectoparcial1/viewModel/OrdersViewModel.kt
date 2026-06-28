@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 // Data class que representa una orden
 data class Order(val type: String, val size: String, val amount: String)
 
-class TaskViewModel : ViewModel() {
+class OrdersViewModel : ViewModel() {
     // Lista de órdenes
     val orders = mutableStateListOf<Order>()
 
