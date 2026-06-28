@@ -2,6 +2,8 @@ package com.example.veranoproyectoparcial1.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -12,6 +14,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.veranoproyectoparcial1.ui.theme.btnazul
+import com.example.veranoproyectoparcial1.ui.theme.masa
 import com.example.veranoproyectoparcial1.viewModel.TaskViewModel
 
 @Composable
@@ -22,7 +26,7 @@ fun OrderScreen(navController: NavController, viewModel: TaskViewModel) {
 
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = Color(0xFFFAD1AF)
+        color = masa
     ) {
         Column(
             modifier = Modifier
@@ -80,7 +84,7 @@ fun OrderScreen(navController: NavController, viewModel: TaskViewModel) {
                         navController.navigate("OrdersScreen")
                     }
                 },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA2A2FF)),
+                colors = ButtonDefaults.buttonColors(containerColor = btnazul),
                 shape = RoundedCornerShape(25.dp),
                 modifier = Modifier.size(width = 180.dp, height = 60.dp)
             ) {
@@ -88,15 +92,26 @@ fun OrderScreen(navController: NavController, viewModel: TaskViewModel) {
             }
 
             Spacer(modifier = Modifier.height(24.dp))
-
-            // Botón EXIT
-            Button(
-                onClick = { navController.navigate("CustomerScreen") },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF29681)),
-                shape = RoundedCornerShape(12.dp),
-                modifier = Modifier.padding(bottom = 32.dp)
-            ) {
-                Text("EXIT", color = Color.Black, fontWeight = FontWeight.Bold)
+        }
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.End
+        ) {
+            Button(onClick = {
+                navController.popBackStack()
+            },
+                colors = ButtonDefaults.buttonColors(Color.Red),
+                shape = RoundedCornerShape(5.dp),
+            )
+            {
+                Icon(
+                    imageVector = Icons.Default.ExitToApp,
+                    contentDescription = "Salir"
+                )
+                Text("  Exit")
             }
         }
     }

@@ -2,6 +2,8 @@ package com.example.veranoproyectoparcial1.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -12,13 +14,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.veranoproyectoparcial1.ui.theme.btnazul
+import com.example.veranoproyectoparcial1.ui.theme.masa
 import com.example.veranoproyectoparcial1.viewModel.TaskViewModel
 
 @Composable
 fun CustomerScreen(navController: NavController, viewModel: TaskViewModel) {
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = Color(0xFFFAD1AF)
+        color = masa
     ) {
         Column(
             modifier = Modifier
@@ -42,9 +46,9 @@ fun CustomerScreen(navController: NavController, viewModel: TaskViewModel) {
 
 
             Button(
-                onClick = { navController.navigate("OrdersScreen") },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA2A2FF)),
-                shape = RoundedCornerShape(25.dp),
+                onClick = { navController.navigate("MenuScreen") },
+                colors = ButtonDefaults.buttonColors(containerColor = btnazul),
+                shape = RoundedCornerShape(10.dp),
                 modifier = Modifier.size(width = 180.dp, height = 60.dp)
             ) {
                 Text("MENU", color = Color.Black, fontWeight = FontWeight.Bold)
@@ -52,27 +56,36 @@ fun CustomerScreen(navController: NavController, viewModel: TaskViewModel) {
 
             Spacer(modifier = Modifier.height(40.dp))
 
-
             Button(
                 onClick = { navController.navigate("OrderScreen") },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFA2A2FF)),
-                shape = RoundedCornerShape(25.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = btnazul),
+                shape = RoundedCornerShape(10.dp),
                 modifier = Modifier.size(width = 180.dp, height = 60.dp)
             ) {
                 Text("ORDER", color = Color.Black, fontWeight = FontWeight.Bold)
             }
 
-            // Este Spacer empuja los botones hacia el centro desde abajo
             Spacer(modifier = Modifier.weight(1f))
-
-
-            Button(
-                onClick = { },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF29681)),
-                shape = RoundedCornerShape(12.dp),
-                modifier = Modifier.padding(bottom = 32.dp)
-            ) {
-                Text("EXIT", color = Color.Black, fontWeight = FontWeight.Bold)
+        }
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.End
+        ) {
+            Button(onClick = {
+                navController.popBackStack()
+            },
+                colors = ButtonDefaults.buttonColors(Color.Red),
+                shape = RoundedCornerShape(5.dp),
+            )
+            {
+                Icon(
+                    imageVector = Icons.Default.ExitToApp,
+                    contentDescription = "Salir"
+                )
+                Text("  Exit")
             }
         }
     }
