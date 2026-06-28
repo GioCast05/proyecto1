@@ -12,15 +12,15 @@ import com.example.veranoproyectoparcial1.ui.screens.MenuScreen
 import com.example.veranoproyectoparcial1.ui.screens.OrderScreen
 import com.example.veranoproyectoparcial1.ui.screens.OrdersScreen
 import com.example.veranoproyectoparcial1.ui.screens.UsScreen
-import com.example.veranoproyectoparcial1.viewModel.TaskViewModel
+import com.example.veranoproyectoparcial1.viewModel.OrdersViewModel
 
 @Composable
 fun NavGraph(navController: NavHostController) {
-    val viewModel: TaskViewModel = viewModel()
+    val ordersViewModel: OrdersViewModel = viewModel()
     NavHost(navController = navController, startDestination = "LoginScreen") {
-        composable("CustomerScreen") { CustomerScreen(navController,viewModel) }
-        composable("OrderScreen") { OrderScreen(navController,viewModel) }
-        composable("OrdersScreen") { OrdersScreen(navController,viewModel) }
+        composable("CustomerScreen") { CustomerScreen(navController, ordersViewModel) }
+        composable("OrderScreen") { OrderScreen(navController, ordersViewModel) }
+        composable("OrdersScreen") { OrdersScreen(navController, ordersViewModel) }
         composable("MenuScreen") { MenuScreen(navController) }
         composable("LoginScreen") { LoginScreen(navController) }
         composable("MainScreen") { MainScreen(navController) }

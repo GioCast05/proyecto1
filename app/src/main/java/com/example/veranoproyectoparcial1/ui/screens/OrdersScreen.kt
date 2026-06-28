@@ -18,10 +18,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.veranoproyectoparcial1.ui.theme.masa
-import com.example.veranoproyectoparcial1.viewModel.TaskViewModel
+import com.example.veranoproyectoparcial1.viewModel.OrdersViewModel
 
 @Composable
-fun OrdersScreen(navController: NavController, viewModel: TaskViewModel) {
+fun OrdersScreen(navController: NavController, ordersViewModel: OrdersViewModel) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = masa
@@ -54,7 +54,7 @@ fun OrdersScreen(navController: NavController, viewModel: TaskViewModel) {
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 contentPadding = PaddingValues(bottom = 16.dp)
             ) {
-                items(viewModel.orders) { order ->
+                items(ordersViewModel.orders) { order ->
                     Card(
                         modifier = Modifier
                             .fillMaxWidth(0.9f)

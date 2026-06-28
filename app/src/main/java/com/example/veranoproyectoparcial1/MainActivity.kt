@@ -17,7 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.veranoproyectoparcial1.navigation.NavGraph
 import com.example.veranoproyectoparcial1.ui.screens.CustomerScreen
 import com.example.veranoproyectoparcial1.ui.theme.VeranoProyectoParcial1Theme
-import com.example.veranoproyectoparcial1.viewModel.TaskViewModel
+import com.example.veranoproyectoparcial1.viewModel.OrdersViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
