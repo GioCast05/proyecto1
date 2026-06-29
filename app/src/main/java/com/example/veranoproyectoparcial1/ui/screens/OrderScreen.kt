@@ -156,7 +156,7 @@ fun OrderScreen(navController: NavController, ordersViewModel: OrdersViewModel) 
                 // Botón SAVE
                 Button(
                     onClick = {
-                        if (type.isNotBlank() && size.isNotBlank() && amount.isNotBlank()) {
+                        if (type.isNotBlank() && size.isNotBlank() && amount.isNotBlank() && currentPrice!=0) {
                             ordersViewModel.addOrder(type, size, amount, currentPrice)
                             navController.navigate("OrdersScreen")
                         } else {

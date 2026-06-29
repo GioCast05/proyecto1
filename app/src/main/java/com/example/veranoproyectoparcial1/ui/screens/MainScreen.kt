@@ -18,6 +18,7 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -44,61 +45,65 @@ fun MainScreen(navController: NavHostController){
         Box(
             modifier = Modifier.fillMaxSize().background(FondoPizzeria)
         ) {
-            Spacer(modifier = Modifier.height(80.dp))
+            Column(modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,) {
 
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
+                Spacer(modifier = Modifier.height(60.dp))
+
                 Text(
-                    "Menu Principal",
-                    fontSize = 30.sp,
-                    fontWeight = FontWeight.Black,
+                    text = "MENU PRINCIPAL",
+                    style = MaterialTheme.typography.headlineLarge,
+                    fontWeight = FontWeight.Bold,
                     fontFamily = FontFamily.Cursive,
-                    color = OlivaGreen
+                    color = OlivaGreen,
+                    letterSpacing = 2.sp
                 )
-
-                Spacer(modifier = Modifier.height(100.dp))
-
-                Button(
-                    onClick = { navController.navigate("OrdersScreen") },
-                    colors = ButtonDefaults.buttonColors(containerColor = cheese),
-                    shape = RoundedCornerShape(10.dp),
-                    modifier = Modifier.size(width = 180.dp, height = 60.dp)
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
                 ) {
-                    Icon(imageVector = Icons.Default.Assignment, contentDescription = null)
-                    Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
-                    Text("Employer")
+                    Button(
+                        onClick = { navController.navigate("OrdersScreen") },
+                        colors = ButtonDefaults.buttonColors(containerColor = cheese),
+                        shape = RoundedCornerShape(10.dp),
+                        modifier = Modifier.size(width = 180.dp, height = 60.dp)
+                    ) {
+                        Icon(imageVector = Icons.Default.Assignment, contentDescription = null)
+                        Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
+                        Text("Employer")
+                    }
+
+                    Spacer(modifier = Modifier.height(30.dp))
+
+                    Button(
+                        onClick = { navController.navigate("CustomerScreen") },
+                        colors = ButtonDefaults.buttonColors(containerColor = cheese),
+                        shape = RoundedCornerShape(10.dp),
+                        modifier = Modifier.size(width = 180.dp, height = 60.dp)
+                    ) {
+                        Icon(imageVector = Icons.Default.Person, contentDescription = null)
+                        Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
+                        Text("Customer")
+                    }
+
+                    Spacer(modifier = Modifier.height(30.dp))
+
+                    Button(
+                        onClick = { navController.navigate("UsScreen") },
+                        colors = ButtonDefaults.buttonColors(containerColor = leafGreen),
+                        shape = RoundedCornerShape(10.dp),
+                        modifier = Modifier.size(width = 150.dp, height = 40.dp)
+                    ) {
+                        Icon(imageVector = Icons.Default.Info, contentDescription = null)
+                        Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
+                        Text("Nosotros")
+                    }
                 }
-
-                Spacer(modifier = Modifier.height(60.dp))
-
-                Button(
-                    onClick = { navController.navigate("CustomerScreen") },
-                    colors = ButtonDefaults.buttonColors(containerColor = cheese),
-                    shape = RoundedCornerShape(10.dp),
-                    modifier = Modifier.size(width = 180.dp, height = 60.dp)
-                ) {
-                    Icon(imageVector = Icons.Default.Person, contentDescription = null)
-                    Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
-                    Text("Customer")
-                }
-
-                Spacer(modifier = Modifier.height(60.dp))
-
-                Button(
-                    onClick = { navController.navigate("UsScreen") },
-                    colors = ButtonDefaults.buttonColors(containerColor = leafGreen),
-                    shape = RoundedCornerShape(10.dp),
-                    modifier = Modifier.size(width = 150.dp, height = 40.dp)
-                ) {
-                    Icon(imageVector = Icons.Default.Info, contentDescription = null)
-                    Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
-                    Text("Nosotros")
-                }
-
             }
             Column(
                 modifier = Modifier
