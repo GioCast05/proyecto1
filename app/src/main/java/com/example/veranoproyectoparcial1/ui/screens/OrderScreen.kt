@@ -11,22 +11,38 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import android.widget.Toast
+import com.example.veranoproyectoparcial1.model.calculatePrice
+import com.example.veranoproyectoparcial1.model.pizzaMenu
 import com.example.veranoproyectoparcial1.ui.theme.FondoPizzeria
 import com.example.veranoproyectoparcial1.ui.theme.OlivaGreen
 import com.example.veranoproyectoparcial1.ui.theme.leafGreen
 import com.example.veranoproyectoparcial1.ui.theme.peperoni
 import com.example.veranoproyectoparcial1.viewModel.OrdersViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OrderScreen(navController: NavController, ordersViewModel: OrdersViewModel) {
-    var Type by remember { mutableStateOf("") }
-    var Size by remember { mutableStateOf("") }
-    var amount by remember { mutableStateOf("") }
+    val context = LocalContext.current
+    var type by remember { mutableStateOf("") }
+    var size by remember { mutableStateOf("") }
+    var amount by remember { mutableStateOf("1") }
+
+    var expandedType by remember { mutableStateOf(false) }
+    var expandedSize by remember { mutableStateOf(false) }
+
+    val sizes = listOf("Chica", "Grande")
+
+    val currentPrice = remember(type, size, amount) {
+        val amt = amount.toIntOrNull() ?: 0
+        calculatePrice(type, size, amt)
+    }
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -59,19 +75,63 @@ fun OrderScreen(navController: NavController, ordersViewModel: OrdersViewModel) 
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    TextField(
-                        value = Type,
-                        onValueChange = { Type = it },
-                        label = { Text("Type") },
-                        modifier = Modifier.fillMaxWidth(0.8f)
-                    )
+                    // Dropdown para Tipo de Pizza
+                    ExposedDropdownMenuBox(
+                        expanded = expandedType,
+                        onExpandedChange = { expandedType = !expandedType }
+                    ) {
+                        TextField(
+                            value = type,
+                            onValueChange = {},
+                            readOnly = true,
+                            label = { Text("Pizza") },
+                            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expandedType) },
+                            modifier = Modifier.menuAnchor().fillMaxWidth(0.8f)
+                        )
+                        ExposedDropdownMenu(
+                            expanded = expandedType,
+                            onDismissRequest = { expandedType = false }
+                        ) {
+                            pizzaMenu.forEach { pizza ->
+                                DropdownMenuItem(
+                                    text = { Text(pizza.name) },
+                                    onClick = {
+                                        type = pizza.name
+                                        expandedType = false
+                                    }
+                                )
+                            }
+                        }
+                    }
 
-                    TextField(
-                        value = Size,
-                        onValueChange = { Size = it },
-                        label = { Text("Size") },
-                        modifier = Modifier.fillMaxWidth(0.8f)
-                    )
+                    // Dropdown para Tamaño
+                    ExposedDropdownMenuBox(
+                        expanded = expandedSize,
+                        onExpandedChange = { expandedSize = !expandedSize }
+                    ) {
+                        TextField(
+                            value = size,
+                            onValueChange = {},
+                            readOnly = true,
+                            label = { Text("Size") },
+                            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expandedSize) },
+                            modifier = Modifier.menuAnchor().fillMaxWidth(0.8f)
+                        )
+                        ExposedDropdownMenu(
+                            expanded = expandedSize,
+                            onDismissRequest = { expandedSize = false }
+                        ) {
+                            sizes.forEach { selectionSize ->
+                                DropdownMenuItem(
+                                    text = { Text(selectionSize) },
+                                    onClick = {
+                                        size = selectionSize
+                                        expandedSize = false
+                                    }
+                                )
+                            }
+                        }
+                    }
 
                     TextField(
                         value = amount,
@@ -79,6 +139,16 @@ fun OrderScreen(navController: NavController, ordersViewModel: OrdersViewModel) 
                         label = { Text("Amount") },
                         modifier = Modifier.fillMaxWidth(0.8f)
                     )
+
+                    // Mostrar Precio Automáticamente
+                    if (currentPrice > 0) {
+                        Text(
+                            text = "Total Price: $$currentPrice",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Black
+                        )
+                    }
                 }
 
                 Spacer(modifier = Modifier.weight(1f))
@@ -86,9 +156,11 @@ fun OrderScreen(navController: NavController, ordersViewModel: OrdersViewModel) 
                 // Botón SAVE
                 Button(
                     onClick = {
-                        if (Type.isNotBlank() && Size.isNotBlank() && amount.isNotBlank()) {
-                            ordersViewModel.addOrder(Type, Size, amount)
+                        if (type.isNotBlank() && size.isNotBlank() && amount.isNotBlank()) {
+                            ordersViewModel.addOrder(type, size, amount, currentPrice)
                             navController.navigate("OrdersScreen")
+                        } else {
+                            Toast.makeText(context, "Datos faltantes", Toast.LENGTH_SHORT).show()
                         }
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = leafGreen),

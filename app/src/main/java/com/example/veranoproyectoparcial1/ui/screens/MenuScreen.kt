@@ -68,7 +68,7 @@ fun MenuScreen(navController: NavController) {
                     ) {
                         pizzaMenu.forEach { pizza ->
                             Text(
-                                "${pizza.name}.......  ${pizza.price}     ${pizza.weight}",
+                                "${pizza.name}.......  $${pizza.priceSmall}CH     $${pizza.priceLarge}G",
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold
                             )

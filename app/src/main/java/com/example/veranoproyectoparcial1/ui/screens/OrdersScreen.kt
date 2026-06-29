@@ -63,7 +63,7 @@ fun OrdersScreen(navController: NavController, ordersViewModel: OrdersViewModel)
                         Card(
                             modifier = Modifier
                                 .fillMaxWidth(0.9f)
-                                .height(100.dp),
+                                .height(120.dp),
                             colors = CardDefaults.cardColors(containerColor = Color.White),
                             shape = RoundedCornerShape(4.dp),
                             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
@@ -82,6 +82,12 @@ fun OrdersScreen(navController: NavController, ordersViewModel: OrdersViewModel)
                                         text = "Size: ${order.size} | Amount: ${order.amount}",
                                         color = Color.Gray,
                                         fontSize = 14.sp
+                                    )
+                                    Text(
+                                        text = "Total: $${order.totalPrice}",
+                                        color = OlivaGreen,
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 16.sp
                                     )
                                 }
                             }
