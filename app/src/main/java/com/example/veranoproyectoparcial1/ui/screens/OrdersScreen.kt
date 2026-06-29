@@ -17,7 +17,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.veranoproyectoparcial1.ui.theme.FondoPizzeria
+import com.example.veranoproyectoparcial1.ui.theme.OlivaGreen
 import com.example.veranoproyectoparcial1.ui.theme.masa
+import com.example.veranoproyectoparcial1.ui.theme.peperoni
 import com.example.veranoproyectoparcial1.viewModel.OrdersViewModel
 
 @Composable
@@ -26,83 +29,88 @@ fun OrdersScreen(navController: NavController, ordersViewModel: OrdersViewModel)
         modifier = Modifier.fillMaxSize(),
         color = masa
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+        Box(
+            modifier = Modifier.fillMaxSize().background(FondoPizzeria)
         ) {
-            Spacer(modifier = Modifier.height(60.dp))
-
-            Text(
-                text = "ORDERS",
-                style = MaterialTheme.typography.headlineLarge,
-                fontWeight = FontWeight.Bold,
-                fontFamily = FontFamily.Cursive,
-                color = Color(0xFF424242),
-                letterSpacing = 2.sp
-            )
-
-            Spacer(modifier = Modifier.height(32.dp))
-
-            // Lista de órdenes
-            LazyColumn(
+            Column(
                 modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-                contentPadding = PaddingValues(bottom = 16.dp)
+                    .fillMaxSize()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                items(ordersViewModel.orders) { order ->
-                    Card(
-                        modifier = Modifier
-                            .fillMaxWidth(0.9f)
-                            .height(100.dp),
-                        colors = CardDefaults.cardColors(containerColor = Color.White),
-                        shape = RoundedCornerShape(4.dp),
-                        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-                    ) {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
+                Spacer(modifier = Modifier.height(60.dp))
+
+                Text(
+                    text = "ORDERS",
+                    style = MaterialTheme.typography.headlineLarge,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily.Cursive,
+                    color = OlivaGreen,
+                    letterSpacing = 2.sp
+                )
+
+                Spacer(modifier = Modifier.height(32.dp))
+
+                // Lista de órdenes
+                LazyColumn(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                    contentPadding = PaddingValues(bottom = 16.dp)
+                ) {
+                    items(ordersViewModel.orders) { order ->
+                        Card(
+                            modifier = Modifier
+                                .fillMaxWidth(0.9f)
+                                .height(100.dp),
+                            colors = CardDefaults.cardColors(containerColor = Color.White),
+                            shape = RoundedCornerShape(4.dp),
+                            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
                         ) {
-                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Text(
-                                    text = "Type: ${order.type}",
-                                    color = Color.Black,
-                                    fontWeight = FontWeight.Bold
-                                )
-                                Text(
-                                    text = "Size: ${order.size} | Amount: ${order.amount}",
-                                    color = Color.Gray,
-                                    fontSize = 14.sp
-                                )
+                            Box(
+                                modifier = Modifier.fillMaxSize(),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                    Text(
+                                        text = "Type: ${order.type}",
+                                        color = Color.Black,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                    Text(
+                                        text = "Size: ${order.size} | Amount: ${order.amount}",
+                                        color = Color.Gray,
+                                        fontSize = 14.sp
+                                    )
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.Bottom,
-            horizontalAlignment = Alignment.End
-        ) {
-            Button(onClick = {
-                navController.popBackStack()
-            },
-                colors = ButtonDefaults.buttonColors(Color.Red),
-                shape = RoundedCornerShape(5.dp),
-            )
-            {
-                Icon(
-                    imageVector = Icons.Default.ExitToApp,
-                    contentDescription = "Salir"
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.Bottom,
+                horizontalAlignment = Alignment.End
+            ) {
+                Button(
+                    onClick = {
+                        navController.popBackStack()
+                    },
+                    colors = ButtonDefaults.buttonColors(peperoni),
+                    shape = RoundedCornerShape(5.dp),
                 )
-                Text("  Exit")
+                {
+                    Icon(
+                        imageVector = Icons.Default.ExitToApp,
+                        contentDescription = "Salir"
+                    )
+                    Text("  Exit")
+                }
             }
         }
     }

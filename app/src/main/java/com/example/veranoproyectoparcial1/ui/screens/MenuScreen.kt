@@ -30,7 +30,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.veranoproyectoparcial1.ui.theme.FondoPizzeria
+import com.example.veranoproyectoparcial1.ui.theme.OlivaGreen
 import com.example.veranoproyectoparcial1.ui.theme.masa
+import com.example.veranoproyectoparcial1.ui.theme.peperoni
 import com.example.veranoproyectoparcial1.viewModel.OrdersViewModel
 
 
@@ -40,71 +43,82 @@ fun MenuScreen(navController: NavController) {
         modifier = Modifier.fillMaxSize(),
         color = masa
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 70.dp, start = 28.dp, end = 28.dp, bottom = 32.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = "ORDERS",
-                fontSize = 30.sp,
-                fontWeight = FontWeight.Black,
-                color = Color.Black,
-                fontFamily = FontFamily.Cursive
-            )
-
-            Spacer(modifier = Modifier.height(40.dp))
-
-            Box(
+        Box(
+            modifier = Modifier.fillMaxSize().background(FondoPizzeria)
+        ){
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(410.dp)
-                    .background(Color.White),
+                    .fillMaxSize()
+                    .padding(top = 70.dp, start = 28.dp, end = 28.dp, bottom = 32.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Column(
-                    modifier = Modifier.padding(10.dp)
-                ) {
-                    Text("HAWAIHANA.......  $130CH     150G",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold)
-
-                    Spacer(modifier = Modifier.height(24.dp))
-
-                    Text("CUABANA..........  $120CH     150G",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold)
-
-                    Spacer(modifier = Modifier.height(24.dp))
-
-                    Text("PEPERONI.........  $140CH     160G",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold)
-                }
-            }
-
-            Spacer(modifier = Modifier.weight(1f))
-
-        }
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.Bottom,
-            horizontalAlignment = Alignment.End
-        ) {
-            Button(onClick = {
-                navController.popBackStack()
-            },
-                colors = ButtonDefaults.buttonColors(Color.Red),
-                shape = RoundedCornerShape(5.dp),
-            )
-            {
-                Icon(
-                    imageVector = Icons.Default.ExitToApp,
-                    contentDescription = "Salir"
+                Text(
+                    text = "ORDERS",
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.Black,
+                    color = OlivaGreen,
+                    fontFamily = FontFamily.Cursive
                 )
-                Text("  Exit")
+
+                Spacer(modifier = Modifier.height(40.dp))
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(410.dp)
+                        .background(Color.White),
+                ) {
+                    Column(
+                        modifier = Modifier.padding(10.dp)
+                    ) {
+                        Text(
+                            "HAWAIHANA.......  $130CH     150G",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+
+                        Spacer(modifier = Modifier.height(24.dp))
+
+                        Text(
+                            "CUABANA..........  $120CH     150G",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+
+                        Spacer(modifier = Modifier.height(24.dp))
+
+                        Text(
+                            "PEPERONI.........  $140CH     160G",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.weight(1f))
+
+            }
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.Bottom,
+                horizontalAlignment = Alignment.End
+            ) {
+                Button(
+                    onClick = {
+                        navController.popBackStack()
+                    },
+                    colors = ButtonDefaults.buttonColors(peperoni),
+                    shape = RoundedCornerShape(5.dp),
+                )
+                {
+                    Icon(
+                        imageVector = Icons.Default.ExitToApp,
+                        contentDescription = "Salir"
+                    )
+                    Text("  Exit")
+                }
             }
         }
     }
