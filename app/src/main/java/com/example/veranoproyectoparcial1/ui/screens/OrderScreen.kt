@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import android.widget.Toast
+import androidx.compose.foundation.layout.Arrangement
 import com.example.veranoproyectoparcial1.model.calculatePrice
 import com.example.veranoproyectoparcial1.model.pizzaMenu
 import com.example.veranoproyectoparcial1.ui.theme.FondoPizzeria
@@ -68,14 +69,16 @@ fun OrderScreen(navController: NavController, ordersViewModel: OrdersViewModel) 
                     letterSpacing = 2.sp
                 )
 
-                Spacer(modifier = Modifier.weight(0.5f))
+                Spacer(modifier = Modifier.height(80.dp))
 
                 // Formulario
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                    verticalArrangement = Arrangement.Center
                 ) {
-                    // Dropdown para Tipo de Pizza
+
+                    Spacer(modifier = Modifier.height(25.dp))
+
                     ExposedDropdownMenuBox(
                         expanded = expandedType,
                         onExpandedChange = { expandedType = !expandedType }
@@ -104,7 +107,8 @@ fun OrderScreen(navController: NavController, ordersViewModel: OrdersViewModel) 
                         }
                     }
 
-                    // Dropdown para Tamaño
+                    Spacer(modifier = Modifier.height(25.dp))
+
                     ExposedDropdownMenuBox(
                         expanded = expandedSize,
                         onExpandedChange = { expandedSize = !expandedSize }
@@ -133,6 +137,8 @@ fun OrderScreen(navController: NavController, ordersViewModel: OrdersViewModel) 
                         }
                     }
 
+                    Spacer(modifier = Modifier.height(25.dp))
+
                     TextField(
                         value = amount,
                         onValueChange = { amount = it },
@@ -151,9 +157,8 @@ fun OrderScreen(navController: NavController, ordersViewModel: OrdersViewModel) 
                     }
                 }
 
-                Spacer(modifier = Modifier.weight(1f))
+                Spacer(modifier = Modifier.height(90.dp))
 
-                // Botón SAVE
                 Button(
                     onClick = {
                         if (type.isNotBlank() && size.isNotBlank() && amount.isNotBlank() && currentPrice!=0) {
