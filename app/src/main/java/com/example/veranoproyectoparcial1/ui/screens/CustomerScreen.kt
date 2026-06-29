@@ -19,8 +19,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.veranoproyectoparcial1.ui.theme.FondoPizzeria
 import com.example.veranoproyectoparcial1.ui.theme.OlivaGreen
-import com.example.veranoproyectoparcial1.ui.theme.btnazul
-import com.example.veranoproyectoparcial1.ui.theme.masa
+import com.example.veranoproyectoparcial1.ui.theme.cheese
 import com.example.veranoproyectoparcial1.ui.theme.peperoni
 import com.example.veranoproyectoparcial1.viewModel.OrdersViewModel
 
@@ -28,7 +27,7 @@ import com.example.veranoproyectoparcial1.viewModel.OrdersViewModel
 fun CustomerScreen(navController: NavController, ordersViewModel: OrdersViewModel) {
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = masa
+        color = Color.Transparent
     ) {
         Box(
             modifier = Modifier.fillMaxSize().background(FondoPizzeria)
@@ -56,7 +55,7 @@ fun CustomerScreen(navController: NavController, ordersViewModel: OrdersViewMode
 
                 Button(
                     onClick = { navController.navigate("MenuScreen") },
-                    colors = ButtonDefaults.buttonColors(containerColor = btnazul),
+                    colors = ButtonDefaults.buttonColors(containerColor = cheese),
                     shape = RoundedCornerShape(10.dp),
                     modifier = Modifier.size(width = 180.dp, height = 60.dp)
                 ) {
@@ -69,7 +68,7 @@ fun CustomerScreen(navController: NavController, ordersViewModel: OrdersViewMode
 
                 Button(
                     onClick = { navController.navigate("OrderScreen") },
-                    colors = ButtonDefaults.buttonColors(containerColor = btnazul),
+                    colors = ButtonDefaults.buttonColors(containerColor = cheese),
                     shape = RoundedCornerShape(10.dp),
                     modifier = Modifier.size(width = 180.dp, height = 60.dp)
                 ) {
@@ -91,7 +90,7 @@ fun CustomerScreen(navController: NavController, ordersViewModel: OrdersViewMode
                     navController.popBackStack()
                 },
                     colors = ButtonDefaults.buttonColors(peperoni),
-                    shape = RoundedCornerShape(5.dp),
+                    shape = RoundedCornerShape(10.dp),
                 )
                 {
                     Icon(

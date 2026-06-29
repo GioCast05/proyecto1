@@ -24,7 +24,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -32,16 +31,15 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.veranoproyectoparcial1.ui.theme.FondoPizzeria
 import com.example.veranoproyectoparcial1.ui.theme.OlivaGreen
-import com.example.veranoproyectoparcial1.ui.theme.btnazul
+import com.example.veranoproyectoparcial1.ui.theme.cheese
 import com.example.veranoproyectoparcial1.ui.theme.leafGreen
-import com.example.veranoproyectoparcial1.ui.theme.masa
 import com.example.veranoproyectoparcial1.ui.theme.peperoni
 
 @Composable
 fun MainScreen(navController: NavHostController){
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = masa
+        color = Color.Transparent
     ){
         Box(
             modifier = Modifier.fillMaxSize().background(FondoPizzeria)
@@ -66,8 +64,8 @@ fun MainScreen(navController: NavHostController){
 
                 Button(
                     onClick = { navController.navigate("OrdersScreen") },
-                    colors = ButtonDefaults.buttonColors(containerColor = btnazul),
-                    shape = RoundedCornerShape(25.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = cheese),
+                    shape = RoundedCornerShape(10.dp),
                     modifier = Modifier.size(width = 180.dp, height = 60.dp)
                 ) {
                     Icon(imageVector = Icons.Default.Assignment, contentDescription = null)
@@ -79,8 +77,8 @@ fun MainScreen(navController: NavHostController){
 
                 Button(
                     onClick = { navController.navigate("CustomerScreen") },
-                    colors = ButtonDefaults.buttonColors(containerColor = btnazul),
-                    shape = RoundedCornerShape(25.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = cheese),
+                    shape = RoundedCornerShape(10.dp),
                     modifier = Modifier.size(width = 180.dp, height = 60.dp)
                 ) {
                     Icon(imageVector = Icons.Default.Person, contentDescription = null)
@@ -93,7 +91,7 @@ fun MainScreen(navController: NavHostController){
                 Button(
                     onClick = { navController.navigate("UsScreen") },
                     colors = ButtonDefaults.buttonColors(containerColor = leafGreen),
-                    shape = RoundedCornerShape(25.dp),
+                    shape = RoundedCornerShape(10.dp),
                     modifier = Modifier.size(width = 150.dp, height = 40.dp)
                 ) {
                     Icon(imageVector = Icons.Default.Info, contentDescription = null)
@@ -114,7 +112,7 @@ fun MainScreen(navController: NavHostController){
                         navController.popBackStack()
                     },
                     colors = ButtonDefaults.buttonColors(peperoni),
-                    shape = RoundedCornerShape(5.dp),
+                    shape = RoundedCornerShape(10.dp),
                 )
                 {
                     Icon(

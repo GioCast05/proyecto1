@@ -26,7 +26,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.veranoproyectoparcial1.ui.theme.OlivaGreen
 import com.example.veranoproyectoparcial1.ui.theme.harmony
-import com.example.veranoproyectoparcial1.ui.theme.masa
 import com.example.veranoproyectoparcial1.ui.theme.peperoni
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -37,14 +36,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import com.example.veranoproyectoparcial1.R
 import com.example.veranoproyectoparcial1.ui.theme.FondoPizzaOscuro
-import com.example.veranoproyectoparcial1.ui.theme.FondoPizzeria
 
 @Composable
 fun UsScreen(navController: NavHostController) {
 
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = masa
+        color = Color.Transparent
     ) {
         Box(
             modifier = Modifier.fillMaxSize().background(FondoPizzaOscuro)
@@ -142,7 +140,7 @@ fun UsScreen(navController: NavHostController) {
                 Button(
                     onClick = { navController.popBackStack() },
                     colors = ButtonDefaults.buttonColors(peperoni),
-                    shape = RoundedCornerShape(8.dp)
+                    shape = RoundedCornerShape(10.dp)
                 ) {
 
                     Icon(

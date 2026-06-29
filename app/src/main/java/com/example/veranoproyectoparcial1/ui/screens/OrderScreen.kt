@@ -18,9 +18,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.veranoproyectoparcial1.ui.theme.FondoPizzeria
 import com.example.veranoproyectoparcial1.ui.theme.OlivaGreen
-import com.example.veranoproyectoparcial1.ui.theme.btnazul
 import com.example.veranoproyectoparcial1.ui.theme.leafGreen
-import com.example.veranoproyectoparcial1.ui.theme.masa
 import com.example.veranoproyectoparcial1.ui.theme.peperoni
 import com.example.veranoproyectoparcial1.viewModel.OrdersViewModel
 
@@ -32,7 +30,7 @@ fun OrderScreen(navController: NavController, ordersViewModel: OrdersViewModel) 
 
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = masa
+        color = Color.Transparent
     ) {
         Box(
             modifier = Modifier.fillMaxSize().background(FondoPizzeria)
@@ -94,7 +92,7 @@ fun OrderScreen(navController: NavController, ordersViewModel: OrdersViewModel) 
                         }
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = leafGreen),
-                    shape = RoundedCornerShape(25.dp),
+                    shape = RoundedCornerShape(10.dp),
                     modifier = Modifier.size(width = 180.dp, height = 60.dp)
                 ) {
                     Icon(imageVector = Icons.Default.Save, contentDescription = null)
@@ -116,7 +114,7 @@ fun OrderScreen(navController: NavController, ordersViewModel: OrdersViewModel) 
                         navController.popBackStack()
                     },
                     colors = ButtonDefaults.buttonColors(peperoni),
-                    shape = RoundedCornerShape(5.dp),
+                    shape = RoundedCornerShape(10.dp),
                 )
                 {
                     Icon(

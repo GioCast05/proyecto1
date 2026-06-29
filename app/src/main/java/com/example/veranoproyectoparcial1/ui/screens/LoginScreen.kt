@@ -15,14 +15,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ExitToApp
-import androidx.compose.material.icons.filled.DoorFront
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Login
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -43,11 +40,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.veranoproyectoparcial1.R
+import com.example.veranoproyectoparcial1.model.usersList
 import com.example.veranoproyectoparcial1.ui.theme.FondoPizzeria
 import com.example.veranoproyectoparcial1.ui.theme.OlivaGreen
-import com.example.veranoproyectoparcial1.ui.theme.btnazul
 import com.example.veranoproyectoparcial1.ui.theme.leafGreen
-import com.example.veranoproyectoparcial1.ui.theme.masa
 import com.example.veranoproyectoparcial1.ui.theme.peperoni
 
 @Composable
@@ -123,7 +119,8 @@ fun LoginScreen(navController: NavHostController){
 
                 Button(
                     onClick = {
-                        if (username == "admin" && password == "admin") {
+                        val user = usersList.find { it.username == username && it.password == password }
+                        if (user != null) {
                             navController.navigate("MainScreen")
                         } else {
                             Toast.makeText(
@@ -133,7 +130,7 @@ fun LoginScreen(navController: NavHostController){
                             ).show()
                         }
                     },
-                    shape = RoundedCornerShape(9.dp),
+                    shape = RoundedCornerShape(10.dp),
                     colors = ButtonDefaults.buttonColors(leafGreen),
 
                     ) {
@@ -156,7 +153,7 @@ fun LoginScreen(navController: NavHostController){
                         activity.finish()
                     },
                     colors = ButtonDefaults.buttonColors(peperoni),
-                    shape = RoundedCornerShape(5.dp),
+                    shape = RoundedCornerShape(10.dp),
                 )
                 {
                     Icon(

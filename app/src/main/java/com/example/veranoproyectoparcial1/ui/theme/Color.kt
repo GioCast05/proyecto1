@@ -16,8 +16,6 @@ val harmony = Color(0xFFF5F1E6)
 val peperoni = Color(red = 192, green = 57, blue = 43)
 val cheese = Color(red = 212, green = 160, blue = 86)
 val leafGreen = Color(red = 125, green = 155, blue = 92)
-val masa = Color(0xFFFAD1AF)
-val btnazul = Color(0xFFA2A2FF)
 
 val FondoPizzeria = Brush.verticalGradient(
     colors = listOf(
