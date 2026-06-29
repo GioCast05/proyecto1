@@ -121,7 +121,12 @@ fun LoginScreen(navController: NavHostController){
                     onClick = {
                         val user = usersList.find { it.username == username && it.password == password }
                         if (user != null) {
-                            navController.navigate("MainScreen")
+                            navController.navigate("MainScreen"){
+                                popUpTo("login") {
+                                    inclusive = true
+                                }
+                            }
+
                         } else {
                             Toast.makeText(
                                 context,
