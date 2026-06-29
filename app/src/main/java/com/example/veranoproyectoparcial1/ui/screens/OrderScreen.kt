@@ -158,7 +158,7 @@ fun OrderScreen(navController: NavController, ordersViewModel: OrdersViewModel) 
                     onClick = {
                         if (type.isNotBlank() && size.isNotBlank() && amount.isNotBlank() && currentPrice!=0) {
                             ordersViewModel.addOrder(type, size, amount, currentPrice)
-                            navController.navigate("OrdersScreen")
+                            Toast.makeText(context, "Orden agregada", Toast.LENGTH_SHORT).show()
                         } else {
                             Toast.makeText(context, "Datos faltantes", Toast.LENGTH_SHORT).show()
                         }
